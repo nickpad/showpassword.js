@@ -1,7 +1,4 @@
 import React from "react";
-import Greeting from "./greeting";
+import PasswordInput from "./PasswordInput";
 
-React.render(
-  <Greeting name="Someone"/>,
-  document.body
-);
+React.render(<PasswordInput/>, document.body);
