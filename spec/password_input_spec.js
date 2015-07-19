@@ -1,7 +1,10 @@
-var assert = require("assert");
+import PasswordInput from "../app/password_input";
+import React from "react/addons";
 
-describe("Something", function() {
-  it("does something", function() {
-    assert.equal("hello", "hello");
+let { TestUtils } = React.addons;
+
+describe("PasswordInput", () => {
+  it("does something", () => {
+    expect("hello").to.equal("hello");
   });
 });

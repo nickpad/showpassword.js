@@ -1,4 +1,4 @@
 import React from "react";
-import PasswordInput from "./PasswordInput";
+import PasswordInput from "./password_input";
 
 React.render(<PasswordInput/>, document.body);
