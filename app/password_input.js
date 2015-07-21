@@ -1,21 +1,13 @@
-import React from "react";
+import React from 'react';
 
 export default class PasswordInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      type: "password",
-      text: "Show"
+      type: 'password',
+      text: 'Show',
     };
     this.toggleInput = this.toggleInput.bind(this);
-  }
-
-  toggleInput() {
-    if (this.state.type == "password") {
-      this.setState({type: "input", text: "Hide"});
-    } else {
-      this.setState({type: "password", text: "Show"});
-    }
   }
 
   render() {
@@ -25,5 +17,13 @@ export default class PasswordInput extends React.Component {
         <a onClick={this.toggleInput}>{this.state.text}</a>
       </div>
     );
+  }
+
+  toggleInput() {
+    if (this.state.type === 'password') {
+      this.setState({type: 'input', text: 'Hide'});
+    } else {
+      this.setState({type: 'password', text: 'Show'});
+    }
   }
 }
