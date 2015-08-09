@@ -11,10 +11,16 @@ export default class PasswordInput extends React.Component {
   }
 
   render() {
+    if (this.state.type === 'password') {
+      var className = "flat-button";
+    } else {
+      var className = "flat-button pressed";
+    }
+
     return (
       <div>
         <input type={this.state.type}/>
-        <a onClick={this.toggleInput}>{this.state.text}</a>
+        <a className={className} onClick={this.toggleInput}>{this.state.text}</a>
       </div>
     );
   }

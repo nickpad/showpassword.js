@@ -1,3 +1,5 @@
+var autoprefixer = require("autoprefixer-core");
+
 module.exports = {
   context: __dirname + "/app",
   entry: {
@@ -21,9 +23,12 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader"
+        loader: "style-loader!css-loader!postcss-loader"
       }
     ]
   },
-  devtool: '#source-map'
+  devtool: "#source-map",
+  postcss: function () {
+    return [autoprefixer];
+  }
 };
