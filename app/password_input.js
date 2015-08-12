@@ -10,6 +10,18 @@ export default class PasswordInput extends React.Component {
     this.toggleInput = this.toggleInput.bind(this);
   }
 
+  getClassName() {
+    let className = '';
+
+    if (this.state.type === 'password') {
+      className = 'flat-button';
+    } else {
+      className = 'flat-button pressed';
+    }
+
+    return className;
+  }
+
   render() {
     return (
       <div>
@@ -24,14 +36,6 @@ export default class PasswordInput extends React.Component {
       this.setState({type: 'input', text: 'Hide'});
     } else {
       this.setState({type: 'password', text: 'Show'});
-    }
-  }
-
-  getClassName() {
-    if (this.state.type === 'password') {
-      return "flat-button";
-    } else {
-      return "flat-button pressed";
     }
   }
 }
