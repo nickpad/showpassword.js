@@ -25,8 +25,10 @@ export default class PasswordInput extends React.Component {
   render() {
     return (
       <div>
-        <input type={this.state.type}/>
-        <a className={this.getClassName()} onClick={this.toggleInput}>{this.state.text}</a>
+        <input type={this.state.type} ref="input"/>
+        <a className={this.getClassName()} onClick={this.toggleInput} ref="button">
+          {this.state.text}
+        </a>
       </div>
     );
   }
