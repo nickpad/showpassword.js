@@ -1,9 +1,6 @@
 // Karma configuration
 // Generated on Sun Jul 19 2015 16:49:23 GMT+1000 (AEST)
 
-var webpackConfig = require("./webpack.config.js");
-webpackConfig.devtool = 'inline-source-map';
-
 module.exports = function(config) {
   config.set({
 
@@ -55,10 +52,21 @@ module.exports = function(config) {
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: false,
 
-    webpack: webpackConfig,
+    webpack: {
+      module: {
+        loaders: [
+          {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            loaders: ["babel-loader"]
+          }
+        ]
+      },
+      devtool: "inline-source-map",
+    },
 
     webpackMiddleware: {
       noInfo: true,
     },
-  })
-}
+  });
+};
