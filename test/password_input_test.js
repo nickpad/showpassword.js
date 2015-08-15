@@ -1,8 +1,8 @@
 /* eslint-env mocha */
-/* global expect */
 
 import PasswordInput from '../app/password_input';
 import React from 'react/addons';
+import {expect} from 'chai';
 
 const { TestUtils } = React.addons;
 
@@ -21,7 +21,7 @@ describe('PasswordInput', () => {
 
     TestUtils.Simulate.click(button);
 
-    expect(input.type).to.equal('text');
+    expect(input.type).to.not.equal('password');
   });
 
   it('maintains the value of the input as the type changes', () => {

@@ -1,34 +1,51 @@
-var autoprefixer = require("autoprefixer-core");
+var autoprefixer = require('autoprefixer-core');
+var webpack = require('webpack');
 
 module.exports = {
-  context: __dirname + "/app",
   entry: {
-    javascript: "./app.js",
-    html: "./index.html"
+    app: [
+      'webpack-dev-server/client?http://0.0.0.0:3000',
+      'webpack/hot/only-dev-server',
+      './app/app.js'
+    ],
+    test: ['./test/test.js', 'webpack/hot/dev-server'],
+    html: './app/index.html'
   },
   output: {
-    filename: "app.js",
-    path: __dirname + "/dist"
+    path: __dirname + '/dist',
+    filename: '[name].bundle.js'
   },
   module: {
     loaders: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ["react-hot", "babel-loader"]
+        loaders: ['react-hot', 'babel-loader']
       },
       {
-        test: /\.html$/,
-        loader: "file?name=[name].[ext]"
+        test: /test\/.*_test\.js$/,
+        loader: 'mocha-loader!babel-loader'
+      },
+      {
+        test: /node_modules\/jsdom/,
+        loader: 'null-loader'
       },
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader!postcss-loader"
+        loader: 'style-loader!css-loader!postcss-loader'
+      },
+      {
+        test: /\.html$/,
+        loader: 'file?name=[name].[ext]'
       }
     ]
   },
-  devtool: "#source-map",
+  devtool: '#source-map',
   postcss: function () {
     return [autoprefixer];
-  }
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ]
 };
