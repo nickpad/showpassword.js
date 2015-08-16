@@ -1,14 +1,10 @@
+/* eslint es6:false */
+
 var autoprefixer = require('autoprefixer-core');
-var webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app: [
-      'webpack-dev-server/client?http://0.0.0.0:3000',
-      'webpack/hot/only-dev-server',
-      './app/app.js'
-    ],
-    test: ['./test/test.js', 'webpack/hot/dev-server'],
+    app: './app/app.js',
     html: './app/index.html'
   },
   output: {
@@ -20,15 +16,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ['react-hot', 'babel-loader']
-      },
-      {
-        test: /test\/.*_test\.js$/,
-        loader: 'mocha-loader!babel-loader'
-      },
-      {
-        test: /node_modules\/jsdom/,
-        loader: 'null-loader'
+        loader: 'babel-loader'
       },
       {
         test: /\.css$/,
@@ -43,9 +31,5 @@ module.exports = {
   devtool: '#source-map',
   postcss: function () {
     return [autoprefixer];
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ]
+  }
 };
