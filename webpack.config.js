@@ -1,6 +1,6 @@
 /* eslint es6:false */
 
-var autoprefixer = require('autoprefixer-core');
+var autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: {
